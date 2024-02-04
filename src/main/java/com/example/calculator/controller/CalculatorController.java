@@ -1,12 +1,12 @@
 package com.example.calculator.controller;
 
+import com.example.calculator.history.History;
 import com.example.calculator.model.Calculation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -43,6 +43,15 @@ public class CalculatorController {
         }
 
         calculation.setResult(result);
-        return "result";
+        calculationRepository.save(calculation);
+
+        return "redirect:/history";
+    }
+
+    @GetMapping("/history")
+    public String getHistory(Model model) {
+        List<Calculation> calculations = calculationRepository.findAll();
+        model.addAttribute("calculations", calculations);
+        return "history";
     }
 }

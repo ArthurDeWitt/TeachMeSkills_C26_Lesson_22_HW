@@ -1,10 +1,13 @@
 package com.example.calculator.model;
 
+
+import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
+@Entity
 public class Calculation {
 
     private double firstNumber;
