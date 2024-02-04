@@ -2,11 +2,14 @@ package com.example.calculator.controller;
 
 import com.example.calculator.history.History;
 import com.example.calculator.model.Calculation;
+import com.example.calculator.repository.CalculationRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.antlr.v4.runtime.tree.xpath.XPath.findAll;
 
 @Controller
 @RequestMapping("/")
